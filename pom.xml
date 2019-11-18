@@ -12,6 +12,7 @@
     <modules>
         <module>ad-eureka</module>
         <module>ad-gateway</module>
+        <module>imooc-ad-service</module>
     </modules>
 
     <!-- 这2个字段 可以没有，为了项目方便维护-->
