@@ -40,8 +40,12 @@ public class AdUniServiceImpl implements IAdUnitService {
       request.getPlanId(), request.getUnitName()
     );
     if(oldAddUnit != null){
-      throw new AdException(Constants.ErrorMsg)
+      throw new AdException(Constants.ErrorMsg.SAME_NAME_UNIT_ERROR);
     }
-    return null;
+    AdUnit newAdUnit = unitRepository.save(
+      new AdUnit(request.getPlanId(),request.getUnitName(),
+        request.getPositionType(), request.getBudget())
+    );
+    return new AdUnitResponse(newAdUnit.getId(), newAdUnit.getUnitName());
   }
 }
