@@ -58,7 +58,7 @@ public class AdPlanServiceImpl implements IAdPlanService {
 
   @Override
   public List<AdPlan> getAdPlanByIds(AdPlanGetRequest request) throws AdException {
-    if(!request.validate()){
+    if (!request.validate()) {
       throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
     }
     return planRepository.findAllByIdInAndUserId(
@@ -69,41 +69,41 @@ public class AdPlanServiceImpl implements IAdPlanService {
   @Override
   @Transactional
   public AdPlanResponse updateAdPlan(AdPLanRequest request) throws AdException {
-    if(!request.updateValidate()){
+    if (!request.updateValidate()) {
       throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
     }
     AdPlan plan = planRepository.findByIdAndUserId(
       request.getId(),
       request.getUserId()
     );
-    if(plan == null){
+    if (plan == null) {
       throw new AdException(Constants.ErrorMsg.CAN_NOT_FIND_RECORD);
     }
     //更新推广计划名称
-    if(request.getPlanName() != null){
+    if (request.getPlanName() != null) {
       plan.setPlanName(request.getPlanName());
     }
-    if(request.getStartDate() != null){
+    if (request.getStartDate() != null) {
       plan.setStartDate(CommonUtils.parseStringDate(request.getStartDate()));
     }
-    if(request.getEndDate() != null){
+    if (request.getEndDate() != null) {
       plan.setEndDate(CommonUtils.parseStringDate(request.getEndDate()));
     }
     plan.setUpdateTime(new Date());
-    plan= planRepository.save(plan);
+    plan = planRepository.save(plan);
     return new AdPlanResponse(plan.getId(), plan.getPlanName());
   }
 
   @Override
   @Transactional
   public void deleteAdPlan(AdPLanRequest request) throws AdException {
-    if(!request.deleteValidate()){
+    if (!request.deleteValidate()) {
       throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
     }
     AdPlan plan = planRepository.findByIdAndUserId(
-      request.getId(),request.getUserId()
+      request.getId(), request.getUserId()
     );
-    if(plan ==null){
+    if (plan == null) {
       throw new AdException(Constants.ErrorMsg.CAN_NOT_FIND_RECORD);
     }
     plan.setPlanStatus(CommonStatus.INVALID.getStatus());
