@@ -11,6 +11,9 @@ import java.util.List;
 @AllArgsConstructor
 public class AdUnitDistrictRequest {
   private List<UnitDistrict> unitDistricts;
+  @Data
+  @NoArgsConstructor
+  @AllArgsConstructor
   public static class UnitDistrict{
     private Long unitId;
     private String province;
