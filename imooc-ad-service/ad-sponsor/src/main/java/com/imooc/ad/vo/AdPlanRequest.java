@@ -8,7 +8,7 @@ import org.apache.commons.lang.StringUtils;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdPLanRequest {
+public class AdPlanRequest {
   private Long id;
   private Long userId;
   private String planName;

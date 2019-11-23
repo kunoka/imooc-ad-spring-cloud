@@ -129,6 +129,12 @@ public class AdUniServiceImpl implements IAdUnitService {
       .collect(Collectors.toList());
     return new AdUnitDistrictResponse(ids);
   }
+
+  @Override
+  public CreativeUnitResponse createCreativeUnit(CreativeUnitRequest request) throws AdException {
+    return null;
+  }
+
   //相关推广单元是否存在的判断
   private boolean isRelatedUnitExist(List<Long> unitIds){
     if(CollectionUtils.isEmpty(unitIds)){

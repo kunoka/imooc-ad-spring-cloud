@@ -9,7 +9,7 @@ import com.imooc.ad.entity.AdUser;
 import com.imooc.ad.exception.AdException;
 import com.imooc.ad.service.IAdPlanService;
 import com.imooc.ad.utils.CommonUtils;
-import com.imooc.ad.vo.AdPLanRequest;
+import com.imooc.ad.vo.AdPlanRequest;
 import com.imooc.ad.vo.AdPlanGetRequest;
 import com.imooc.ad.vo.AdPlanResponse;
 import org.springframework.stereotype.Service;
@@ -31,7 +31,7 @@ public class AdPlanServiceImpl implements IAdPlanService {
 
   @Override
   @Transactional // 访问数据库，开启事务
-  public AdPlanResponse createAdPlan(AdPLanRequest request)
+  public AdPlanResponse createAdPlan(AdPlanRequest request)
     throws AdException {
     if (!request.createValidate()) {
       throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
@@ -68,7 +68,7 @@ public class AdPlanServiceImpl implements IAdPlanService {
 
   @Override
   @Transactional
-  public AdPlanResponse updateAdPlan(AdPLanRequest request) throws AdException {
+  public AdPlanResponse updateAdPlan(AdPlanRequest request) throws AdException {
     if (!request.updateValidate()) {
       throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
     }
@@ -96,7 +96,7 @@ public class AdPlanServiceImpl implements IAdPlanService {
 
   @Override
   @Transactional
-  public void deleteAdPlan(AdPLanRequest request) throws AdException {
+  public void deleteAdPlan(AdPlanRequest request) throws AdException {
     if (!request.deleteValidate()) {
       throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
     }
