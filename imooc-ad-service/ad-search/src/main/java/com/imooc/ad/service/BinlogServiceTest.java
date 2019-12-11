@@ -6,15 +6,13 @@ import com.github.shyiko.mysql.binlog.event.EventData;
 import com.github.shyiko.mysql.binlog.event.UpdateRowsEventData;
 import com.github.shyiko.mysql.binlog.event.WriteRowsEventData;
 
-import java.io.IOException;
-
 public class BinlogServiceTest {
   public static void main(String[] args) throws Exception {
     System.out.println("===开始执行===");
     BinaryLogClient client = new BinaryLogClient(
       "127.0.0.1", 3306, "root", "password"
     );
-    client.setBinlogFilename("binlog.000037");
+//    client.setBinlogFilename("binlog.000037");
 //    client.setBinlogPosition();
     //注册事件监听器
     client.registerEventListener(event -> {
