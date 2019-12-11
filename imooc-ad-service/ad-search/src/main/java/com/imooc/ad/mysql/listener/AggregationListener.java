@@ -35,7 +35,7 @@ public class AggregationListener implements BinaryLogClient.EventListener {
   public void register(String _dbName, String _tableName,
                        Ilistener ilistener) {
     log.info("register: {}-{}", _dbName, _tableName);
-    this.listenerMap.put(genKey(_dbName, _tableName), ilistener)
+    this.listenerMap.put(genKey(_dbName, _tableName), ilistener);
   }
 
   @Override
@@ -71,7 +71,7 @@ public class AggregationListener implements BinaryLogClient.EventListener {
       if (rowData == null) {
         return;
       }
-      rowData.setEventType(type)
+      rowData.setEventType(type);
       listener.onEvent(rowData);
     } catch (Exception ex) {
       ex.printStackTrace();
