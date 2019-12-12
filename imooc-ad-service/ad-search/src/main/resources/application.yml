@@ -40,4 +40,6 @@ adconf:
     username: root
     password: password
     binlogName: ""
-    position: -1 //代表binglog的偏移量，-1代表从当前位置开始
+    position: -1 #代表binglog的偏移量，-1代表从当前位置开始
+  kafka:
+    topic: ad-search-mysql-data
