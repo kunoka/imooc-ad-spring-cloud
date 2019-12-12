@@ -7,7 +7,7 @@ public class Constant {
   private static final String DB_NAME = "imooc_ad_data";
 
   //给每一个表定义一个内部类 - 推广计划 表信息
-  private static class AD_PLAN_TABLE_INFO {
+  public static class AD_PLAN_TABLE_INFO {
     public static final String TABLE_NAME = "ad_plan";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_USER_ID = "user_id";

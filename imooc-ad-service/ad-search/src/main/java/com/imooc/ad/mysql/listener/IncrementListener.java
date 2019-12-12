@@ -22,7 +22,7 @@ import java.util.Map;
 public class IncrementListener implements Ilistener {
 
   //根据name选择注入
-  @Resource(name = "")
+  @Resource(name = "indexSender")
   private ISender sender;
   private final AggregationListener aggregationListener;
 
