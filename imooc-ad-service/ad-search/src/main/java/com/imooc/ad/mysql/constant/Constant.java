@@ -41,20 +41,20 @@ public class Constant {
     public static final String COLUMN_UNIT_ID = "unit_id";
   }
 
-  public static class AD_UNIT_DISTRICT_INFO {
+  public static class AD_UNIT_DISTRICT_TABLE_INFO {
     public static final String TABLE_NAME = "ad_unit_district";
     public static final String COLUMN_UNIT_ID = "unit_id";
     public static final String COLUMN_PROVINCE = "province";
     public static final String COLUMN_CITY = "city";
   }
 
-  public static class AD_UNIT_IT_INFO {
+  public static class AD_UNIT_IT_TABLE_INFO {
     public static final String TABLE_NAME = "ad_unit_it";
     public static final String COLUMN_UNIT_ID = "unit_id";
     public static final String COLUMN_IT_TAG = "it_tag";
   }
 
-  public static class AD_UNIT_KEYWORD_INFO {
+  public static class AD_UNIT_KEYWORD_TABLE_INFO {
     public static final String TABLE_NAME = "ad_unit_keyword";
     public static final String COLUMN_UNIT_ID = "unit_id";
     public static final String COLUMN_KEYWORD = "keyword";
@@ -68,8 +68,8 @@ public class Constant {
     table2Db.put(AD_CREATIVE_TABLE_INFO.TABLE_NAME, DB_NAME);
     table2Db.put(AD_UNIT_TABLE_INFO.TABLE_NAME, DB_NAME);
     table2Db.put(AD_CREATIVE_UNIT_TABLE_INFO.TABLE_NAME, DB_NAME);
-    table2Db.put(AD_UNIT_DISTRICT_INFO.TABLE_NAME, DB_NAME);
-    table2Db.put(AD_UNIT_IT_INFO.TABLE_NAME, DB_NAME);
-    table2Db.put(AD_UNIT_KEYWORD_INFO.TABLE_NAME, DB_NAME);
+    table2Db.put(AD_UNIT_DISTRICT_TABLE_INFO.TABLE_NAME, DB_NAME);
+    table2Db.put(AD_UNIT_IT_TABLE_INFO.TABLE_NAME, DB_NAME);
+    table2Db.put(AD_UNIT_KEYWORD_TABLE_INFO.TABLE_NAME, DB_NAME);
   }
 }

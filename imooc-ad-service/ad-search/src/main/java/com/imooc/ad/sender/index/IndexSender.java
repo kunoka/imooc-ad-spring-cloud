@@ -1,10 +1,7 @@
 package com.imooc.ad.sender.index;
 
 import com.alibaba.fastjson.JSON;
-import com.imooc.ad.dump.table.AdCreativeTable;
-import com.imooc.ad.dump.table.AdCreativeUnitTable;
-import com.imooc.ad.dump.table.AdPlanTable;
-import com.imooc.ad.dump.table.AdUnitTable;
+import com.imooc.ad.dump.table.*;
 import com.imooc.ad.handler.AdLevelDataHandler;
 import com.imooc.ad.index.DataLevel;
 import com.imooc.ad.mysql.constant.Constant;
@@ -27,15 +24,15 @@ public class IndexSender implements ISender {
     if (DataLevel.LEVEL2.getLevel().equals(level)) {
       Level2RowData(rowData);
     } else if (DataLevel.LEVEL3.getLevel().equals(level)) {
-      //
+      Level3RowData(rowData);
     } else if (DataLevel.LEVEL4.getLevel().equals(level)) {
-      //
+      Level4RowData(rowData);
     } else {
       log.error("Mysql RowData ERROR: {}", JSON.toJSONString(rowData));
     }
   }
 
-  // 处理第2层级的RowData
+  // 处理第2层级增量数据的投递
   private void Level2RowData(MySqlRowData rowData) {
     if (rowData.getTableName().equals(
       Constant.AD_PLAN_TABLE_INFO.TABLE_NAME
@@ -106,7 +103,7 @@ public class IndexSender implements ISender {
     }
   }
 
-  // 处理第3层级的RowData
+  // 处理第3层级增量数据的投递 (跟第2层级的有依赖关系，所以定义为第3层级)
   private void Level3RowData(MySqlRowData rowData) {
     if (rowData.getTableName().equals(
       Constant.AD_UNIT_TABLE_INFO.TABLE_NAME
@@ -154,6 +151,70 @@ public class IndexSender implements ISender {
       }
       creativeUnitTables.forEach(u ->
         AdLevelDataHandler.handleLevel3(u, rowData.getOpType()));
+    }
+  }
+
+  // 处理第4层级增量数据的投递
+  private void Level4RowData(MySqlRowData rowData) {
+    switch (rowData.getTableName()) {
+      case Constant.AD_UNIT_DISTRICT_TABLE_INFO.TABLE_NAME:
+        List<AdUnitDistrictTable> districtTables = new ArrayList<>();
+        for (Map<String, String> fieldValueMap : rowData.getFieldValueMap()) {
+          AdUnitDistrictTable districtTable = new AdUnitDistrictTable();
+          fieldValueMap.forEach((k, v) -> {
+            switch (k) {
+              case Constant.AD_UNIT_DISTRICT_TABLE_INFO.COLUMN_UNIT_ID:
+                districtTable.setUnitId(Long.valueOf(v));
+                break;
+              case Constant.AD_UNIT_DISTRICT_TABLE_INFO.COLUMN_PROVINCE:
+                districtTable.setProvince(v);
+                break;
+              case Constant.AD_UNIT_DISTRICT_TABLE_INFO.COLUMN_CITY:
+                districtTable.setCity(v);
+                break;
+            }
+          });
+          districtTables.add(districtTable);
+        }
+        districtTables.forEach(d -> AdLevelDataHandler.handleLevel4(d, rowData.getOpType()));
+        break;
+      case Constant.AD_UNIT_IT_TABLE_INFO.TABLE_NAME:
+        List<AdUnitItTable> itTables = new ArrayList<>();
+        for (Map<String, String> fieldValueMap : rowData.getFieldValueMap()) {
+          AdUnitItTable itTable = new AdUnitItTable();
+          fieldValueMap.forEach((k, v) -> {
+            switch (k) {
+              case Constant.AD_UNIT_IT_TABLE_INFO.COLUMN_UNIT_ID:
+                itTable.setUnitId(Long.valueOf(v));
+                break;
+              case Constant.AD_UNIT_IT_TABLE_INFO.COLUMN_IT_TAG:
+                itTable.setItTag(v);
+                break;
+            }
+          });
+          itTables.add(itTable);
+        }
+        itTables.forEach(i -> AdLevelDataHandler.handleLevel4(i, rowData.getOpType()));
+        break;
+      case Constant.AD_UNIT_KEYWORD_TABLE_INFO.TABLE_NAME:
+        List<AdUnitKeywordTable> keywordTables = new ArrayList<>();
+        for (Map<String, String> fieldValueMap : rowData.getFieldValueMap()) {
+          AdUnitKeywordTable keywordTable = new AdUnitKeywordTable();
+          fieldValueMap.forEach((k, v) -> {
+            switch (k) {
+              case Constant.AD_UNIT_KEYWORD_TABLE_INFO.COLUMN_UNIT_ID:
+                keywordTable.setUnitId(Long.valueOf(v));
+                break;
+              case Constant.AD_UNIT_KEYWORD_TABLE_INFO.COLUMN_KEYWORD:
+                keywordTable.setKeyword(v);
+                break;
+            }
+          });
+          keywordTables.add(keywordTable);
+        }
+        keywordTables.forEach(k ->
+          AdLevelDataHandler.handleLevel4(k, rowData.getOpType()));
+        break;
     }
   }
 }
