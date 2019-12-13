@@ -84,10 +84,10 @@ public class IndexSender implements ISender {
               creativeTable.setMaterialType(Integer.valueOf(v));
               break;
             case Constant.AD_CREATIVE_TABLE_INFO.COLUMN_HEIGHT:
-              creativeTable.setHeight(Long.valueOf(v));
+              creativeTable.setHeight(Integer.valueOf(v));
               break;
             case Constant.AD_CREATIVE_TABLE_INFO.COLUMN_WIDTH:
-              creativeTable.setWidth(Long.valueOf(v));
+              creativeTable.setWidth(Integer.valueOf(v));
               break;
             case Constant.AD_CREATIVE_TABLE_INFO.COLUMN_AUDIT_STATUS:
               creativeTable.setAuditStatus(Integer.valueOf(v));

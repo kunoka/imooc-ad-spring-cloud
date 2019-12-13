@@ -12,8 +12,8 @@ public class AdCreativeTable {
   private String name;
   private Integer type;
   private Integer materialType;
-  private Long height;
-  private Long width;
+  private Integer height;
+  private Integer width;
   private Integer auditStatus;
   private String adUrl;
 }

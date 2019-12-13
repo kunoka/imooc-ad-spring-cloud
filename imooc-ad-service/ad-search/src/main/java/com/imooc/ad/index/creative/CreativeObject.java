@@ -12,8 +12,8 @@ public class CreativeObject {
   private String name;
   private Integer type;
   private Integer materialType;
-  private Long height;
-  private Long weight;
+  private Integer height;
+  private Integer weight;
   private Integer auditStatus;
   private String adUrl;
 
