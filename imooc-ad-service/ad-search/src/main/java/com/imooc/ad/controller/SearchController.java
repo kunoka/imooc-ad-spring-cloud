@@ -9,8 +9,6 @@ import com.imooc.ad.search.ISearch;
 import com.imooc.ad.search.vo.SearchRequest;
 import com.imooc.ad.search.vo.SearchResponse;
 import com.imooc.ad.vo.CommonResponse;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,12 +34,12 @@ public class SearchController {
   }
 
   // post 方法 定义 url 为 fetchAds
-//  @PostMapping("/fetchAds")
-//  public SearchResponse fetchAds(@RequestBody SearchRequest request) {
-//    log.info("ad search: fetchAds -> {}",
-//      JSON.toJSONString(request));
-//    return search.fetchAds(request);
-//  }
+  @PostMapping("/fetchAds")
+  public SearchResponse fetchAds(@RequestBody SearchRequest request) {
+    log.info("ad search: fetchAds -> {}",
+      JSON.toJSONString(request));
+    return search.fetchAds(request);
+  }
 
   @IgnoreResponseAdvice
   @PostMapping("/getAdPlans")
