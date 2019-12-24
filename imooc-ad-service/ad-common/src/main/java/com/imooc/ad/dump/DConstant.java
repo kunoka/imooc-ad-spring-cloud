@@ -1,7 +1,9 @@
 package com.imooc.ad.dump;
 
 public class DConstant {
-  public static final String DATA_ROOT_DIR = "/Users/putao/mysql_data/";
+//  public static final String DATA_ROOT_DIR = "/Users/putao/imooc/imooc-ad-spring-cloud/mysql_data/";
+  public static final String DATA_ROOT_DIR = "/Users/putao/imooc/imooc-ad-spring-cloud/mysql_data/";
+//    "/Users/putao/mysql_data/";
   //  保个表数据的存储文件名 (表名字+.data)
   // 与之前对应的索引对象和索引服务相对应，有多少个索引对象就有多少个表数据的存储文件
   public static final String AD_PLAN = "ad_plan.data";

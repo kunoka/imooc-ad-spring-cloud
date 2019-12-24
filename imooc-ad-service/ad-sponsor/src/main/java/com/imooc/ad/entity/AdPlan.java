@@ -40,11 +40,11 @@ public class AdPlan {
   private Date endDate;
 
   @Basic
-  @Column(name = "start_time", nullable = false)
+  @Column(name = "create_time", nullable = false)
   private Date createTime;
 
   @Basic
-  @Column(name = "update-time", nullable = false)
+  @Column(name = "update_time", nullable = false)
   private Date updateTime;
 
   public AdPlan(Long userId, String planName, Date startDate, Date endDate) {

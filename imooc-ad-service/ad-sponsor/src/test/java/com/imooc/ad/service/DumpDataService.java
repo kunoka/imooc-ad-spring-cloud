@@ -28,6 +28,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.CollectionUtils;
 
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -83,8 +85,11 @@ public class DumpDataService {
       )
     ));
     Path path = Paths.get(fileName);
+    System.out.println("==Path==" + path);
     try (BufferedWriter writer = Files.newBufferedWriter(path)){
       for(AdPlanTable planTable: planTables ){
+        System.out.println("JSON");
+        System.out.println(JSON.toJSONString(planTable));
         writer.write(JSON.toJSONString(planTable));
         writer.newLine();
       }
