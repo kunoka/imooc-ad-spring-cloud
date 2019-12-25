@@ -2,12 +2,9 @@ package com.imooc.ad.mysql;
 
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
 import com.imooc.ad.mysql.listener.AggregationListener;
-import com.netflix.discovery.converters.Auto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.io.IOException;
 
 @Slf4j
@@ -24,6 +21,8 @@ public class BinlogClient {
 
   // 是在一个新线程启动的，不会导致主线程hang住
   public void connect() {
+    System.out.println("==================config=================");
+    System.out.println(config);
     new Thread(() -> {
       client = new BinaryLogClient(
         config.getHost(),

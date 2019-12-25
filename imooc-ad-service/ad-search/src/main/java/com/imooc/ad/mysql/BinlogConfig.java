@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
+// 实现变量到 java 对象的转换
 @ConfigurationProperties(prefix = "adconf.mysql")
 @Data
 @NoArgsConstructor

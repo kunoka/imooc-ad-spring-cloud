@@ -38,7 +38,7 @@ public class SearchResponse {
     creative.setAdId(object.getAdId());
     creative.setAdUrl(object.getAdUrl());
     creative.setHeight(object.getHeight());
-    creative.setWidth(object.getWeight());
+    creative.setWidth(object.getWidth());
     creative.setType(object.getType());
     creative.setMaterialType(object.getMaterialType());
     return creative;

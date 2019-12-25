@@ -10,7 +10,10 @@ public class BinlogServiceTest {
   public static void main(String[] args) throws Exception {
     System.out.println("===开始执行===");
     BinaryLogClient client = new BinaryLogClient(
-      "127.0.0.1", 3306, "root", "password"
+      "127.0.0.1",
+      3306,
+      "root",
+      "password"
     );
 //    client.setBinlogFilename("binlog.000037");
 //    client.setBinlogPosition();

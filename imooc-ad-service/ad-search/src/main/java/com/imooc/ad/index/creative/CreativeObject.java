@@ -12,8 +12,8 @@ public class CreativeObject {
   private String name;
   private Integer type;
   private Integer materialType;
+  private Integer width;
   private Integer height;
-  private Integer weight;
   private Integer auditStatus;
   private String adUrl;
 
@@ -30,11 +30,11 @@ public class CreativeObject {
     if(newObject.getMaterialType() != null) {
       this.materialType = newObject.getMaterialType();
     }
+    if(newObject.getWidth() != null) {
+      this.width = newObject.getWidth();
+    }
     if(newObject.getHeight() != null) {
       this.height = newObject.getHeight();
-    }
-    if(newObject.getWeight() != null) {
-      this.weight = newObject.getWeight();
     }
     if(newObject.getAuditStatus() != null) {
       this.auditStatus = newObject.getAuditStatus();

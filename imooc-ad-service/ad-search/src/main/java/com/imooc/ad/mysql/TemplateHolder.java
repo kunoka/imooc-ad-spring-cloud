@@ -23,9 +23,8 @@ public class TemplateHolder {
   private ParseTemplate template;
   private final JdbcTemplate jdbcTemplate;
 
-  private String SQL_SCHEMA = "select table_schema, table_name," +
-    " column_name, ordinal_position from information_schema.columns " +
-    "where table_schema = ？ and table_name = ？";
+  private String SQL_SCHEMA = "select table_schema, table_name, " +
+    "column_name, ordinal_position from information_schema.columns where table_schema = ? and table_name = ?";
 
   public TemplateHolder(JdbcTemplate jdbcTemplate) {
     this.jdbcTemplate = jdbcTemplate;

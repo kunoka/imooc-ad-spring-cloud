@@ -19,7 +19,6 @@ import com.imooc.ad.search.vo.feature.FeatureRelation;
 import com.imooc.ad.search.vo.feature.ItFeature;
 import com.imooc.ad.search.vo.feature.KeywordFeature;
 import com.imooc.ad.search.vo.media.AdSlot;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
@@ -70,9 +69,8 @@ public class SearchImpl implements ISearch {
         .selectAds(unitObjects);
       List<CreativeObject> creatives = DataTable.of(CreativeIndex.class)
         .fetch(adIds);
-
-      // 通过 AdSlot 实现对 CreativeObjects 的过滤
-      filterCreativeBySlot(
+      // 通过 AdSlot 实现对 CreativeObject 的过滤
+      filterCreativeByAdSlot(
         creatives,
         adSlot.getWidth(),
         adSlot.getHeight(),
@@ -172,7 +170,7 @@ public class SearchImpl implements ISearch {
     );
   }
 
-  private void filterCreativeBySlot(List<CreativeObject> creatives,
+  private void filterCreativeByAdSlot(List<CreativeObject> creatives,
                                     Integer width,
                                     Integer height,
                                     List<Integer> type) {
@@ -183,7 +181,7 @@ public class SearchImpl implements ISearch {
       creatives,
       creative ->
         creative.getAuditStatus().equals(CommonStatus.VALID.getStatus())
-          && creative.getWeight().equals(width)
+          && creative.getWidth().equals(width)
           && creative.getHeight().equals(height)
           && type.contains(creative.getType())
     );
@@ -197,7 +195,7 @@ public class SearchImpl implements ISearch {
     }
     CreativeObject randomObject = creatives.get(
       Math.abs(new Random().nextInt()) % creatives.size());
-
+    System.out.println(randomObject);
     return Collections.singletonList(
       SearchResponse.convert(randomObject)
     );
