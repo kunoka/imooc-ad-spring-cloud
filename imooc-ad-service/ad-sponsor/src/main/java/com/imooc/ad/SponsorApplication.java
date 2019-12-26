@@ -10,9 +10,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableCircuitBreaker //调度器，也是为了实现监控
 @EnableEurekaClient //标识它是一个eureka client
 @SpringBootApplication //这是一个springboot的application
+
 public class SponsorApplication {
   public static void main(String[] args) {
-    SpringApplication.run(SpringApplication.class, args);
+    SpringApplication.run(SponsorApplication.class, args);
   }
-
 }
